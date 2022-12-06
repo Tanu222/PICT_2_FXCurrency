@@ -1,0 +1,10 @@
+.data-box .title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.data-box .price span{
+    font-size: 25px;
+}
+.data-box{
+    height: 150px;
+}

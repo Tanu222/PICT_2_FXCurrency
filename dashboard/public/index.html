@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+          name="description"
+          content="Web site created using create-react-app"
+  />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
+    manifest.json provides metadata used when your web app is installed on a
+    user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+  -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FX Exchange Rates</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--
+    Notice the use of %PUBLIC_URL% in the tags above.
+    It will be replaced with the URL of the `public` folder during the build.
+    Only files inside the `public` folder can be referenced from the HTML.
+
+    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+    work correctly both with client-side routing and a non-root public URL.
+    Learn how to configure a non-root public URL by running `npm run build`.
+  -->
+  <title>React App</title>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+
+-->
+
+<header>
+
+  <div id="menu-bar" class="fas fa-bars"></div>
+
+  <a href="#" class="logo"><span>EX</span>change <span>RA</span>tes</a>
+
+  <nav class="navbar">
+    <a href="#home">home</a>
+    <a href="#root">analysis</a>
+    <a href="#packages">how it works</a>
+    <a href="#review">currencies</a>
+  </nav>
+
+  <div class="icons">
+    <i class="fas fa-search" id="search-btn"></i>
+    <i class="fas fa-user" id="login-btn"></i>
+  </div>
+
+  <form action="" class="search-bar-container">
+    <input type="search" id="search-bar" placeholder="search here...">
+    <label for="search-bar" class="fas fa-search"></label>
+  </form>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- login form container  -->
+
+<div class="login-form-container">
+
+  <i class="fas fa-times" id="form-close"></i>
+
+  <form action="">
+    <h3>login</h3>
+    <input type="email" class="box" placeholder="enter your email">
+    <input type="password" class="box" placeholder="enter your password">
+    <input type="submit" value="login now" class="btn">
+    <input type="checkbox" id="remember">
+    <label for="remember">remember me</label>
+    <p>forget password? <a href="#">click here</a></p>
+    <p>don't have and account? <a href="#">register now</a></p>
+  </form>
+
+</div>
+
+<!-- home section starts  -->
+
+
+
+<!-- home section ends -->
+
+<!-- book section starts  -->
+
+
+<!-- book section ends -->
+
+<!-- packages section starts  -->
+
+<section class="packages" id="packages">
+  <div class="h1c">
+    <h1 class="heading">
+      <span>H</span>
+      <span>o</span>
+      <span>w</span>
+
+      <span class="space"></span>
+      <span>e</span>
+      <span>x</span>
+      <span>c</span>
+      <span>h</span>
+      <span>a</span>
+      <span>n</span>
+      <span>g</span>
+      <span>e</span>
+      <span class="space"></span>
+      <span>r</span>
+      <span>a</span>
+      <span>t</span>
+      <span>e</span>
+      <span class="space"></span>
+      <span>w</span>
+      <span>o</span>
+      <span>r</span>
+      <span>k</span>
+      <span>s</span>
+    </h1>
+  </div>
+  <div class="box-container">
+
+    <div class="box">
+      <img src="images/Screenshot_20221205-210640_YouTube.jpg" alt="">
+      <div class="content">
+        <h3> <i class="fas fa-map-marker-alt"></i></h3>
+        <p>Suppose you and I live alone on two islands.We grow different things on our island.You grow tomatoes on your island and I grow onions on mine.</p>
+
+        <div class="price"> </div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="images/Screenshot_20221205-205925_YouTube.jpg" alt="">
+      <div class="content">
+        <h3> <i class="fas fa-map-marker-alt"></i></h3>
+        <p>Both of us create our currencies.You make Tomato coin your currency.You create 100 coins,so you have 100 Tomato coins.I make Onion coin my currency.We decide that the conversion rate or the Exchange rate of our currencies which would be 1:1 as of now. </p>
+
+        <div class="price"> 100 T = 100 O</div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="images/Screenshot_20221205-210000_YouTube.jpg" alt="">
+      <div class="content">
+        <h3> <i class="fas fa-map-marker-alt"></i> </h3>
+        <p>A few months pass.You work very hard and you grow 200 tomatoes instead of 100.But I didn't work as hard and manage to grow only 100 onions.Suddenly,the value of your currency has increased because you still have only 100 Tomato coins.So,for you the value of one coin has become 2 tomatoes.For exchange,the value of 1 T has become equal to 2 O coins.</p>
+
+        <div class="price"> 1 T = 2 O</div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="images/Screenshot_20221205-210122_YouTube.jpg" alt="">
+      <div class="content">
+        <h3> <i class="fas fa-map-marker-alt"></i></h3>
+        <p>Suppose you grow 1000 tomatoes instead of 100, and you've also learned to make pizza with the tomatoes, and a 3rd person passes by our islands, he sees that on one island he can get onions only.While on other he can get pizza.So he'll obviously prefer to stay on your island.</p>
+
+        <div class="price"></div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="images/image3.jpeg" alt="">
+      <div class="content">
+        <h3> <i class="fas fa-map-marker-alt"></i> </h3>
+        <p>So you tell him that if he wants to buy your pizza,it can be bought with your currency only.So he'll buy Tomato coins first which will enable him to buy your pizza.If he buys your Tomato coin instead of my Onion coin,it will drive up the value of Tomato coins even more.</p>
+
+        <div class="price"> T > O</div>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="images/Screenshot_20221205-210236_YouTube.jpg" alt="">
+      <div class="content">
+        <h3> <i class="fas fa-map-marker-alt"></i> </h3>
+        <p>He'll think that when he'd be back for more pizza,he'd need more Tomato coins.So it'd be better to buy some T coins beforehand. He'll go to 4th person and tell that they can get pizza from your island for T coins and will attract more people to your island. They'll buy some T coins too.The demand for Tomato coins will rise and this will push it's value as well.</p>
+
+        <div class="price"> T >>> O</div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- packages section ends -->
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+
+  <h1 class="heading">
+    <span>C</span>
+    <span>U</span>
+    <span>R</span>
+    <span>R</span>
+    <span>e</span>
+    <span>N</span>
+    <span>C</span>
+    <span>I</span>
+    <span>E</span>
+    <span>S</span>
+  </h1>
+
+  <div class="box-container">
+
+    <div class="box">
+
+      <div class="swiper-slide">
+        <div class="box">
+          <img src="images/dzd.png" alt="">
+          <h3>Algerian Dinar</h3>
+          <p>The dinar ( sign: DA; code: DZD) is the monetary currency of Algeria and it is subdivided into 100 centimes. Centimes are now obsolete due to their extremely low value.A price of 100 dinars is read as "ten thousand" </p>
+
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="box">
+          <img src="images/eur.webp" alt="">
+          <h3>The EURO</h3>
+          <p>On 1 January 1999, 11 EU countries launched the euro as their new common currency.Euro banknotes and coins were introduced three years later. Today, the euro is the currency of 19 EU countries and over 340 million Europeans.</p>
+
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="box">
+          <img src="images/china.webp" alt="">
+          <h3>Renminbi</h3>
+          <p>The renminbi (symbol: ¥; ISO code: CNY; abbreviation: RMB) is the official currency of the People's Republic of China and one of the world's most traded currencies, ranking as the fifth most traded currency in the world as of April 2022.</p>
+
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="box">
+          <img src="images/inr.png" alt="">
+          <h3>The Indian Rupee</h3>
+          <p>The Indian rupee (symbol: ₹; code: INR) is the official currency of India. The rupee is subdivided into 100 paise (singular: paisa), though as of 2022, coins of denomination of 1 rupee are the lowest value in use whereas 2000 rupees is the highest.</p>
+
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="box">
+          <img src="images/usd.png" alt="">
+          <h3>United States Dollar</h3>
+          <p>The USD is the official currency of the United States of America. The United States dollar, or U.S. dollar, is made up of 100 cents. It is represented by the symbol $ or US$ to differentiate it from other dollar-based currencies.</p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- contact section starts  -->
+
+
+<!-- contact section ends -->
+<!-- footer section  -->
+
+<section class="footer">
+
+  <div class="box-container">
+
+    <div class="box">
+      <h3>about us</h3>
+      <p></p>
+    </div>
+    <div class="box">
+      <h3>branch locations</h3>
+      <a href="#">india</a>
+
+    </div>
+    <div class="box">
+      <h3>quick links</h3>
+      <a href="#">home</a>
+
+      <a href="#">review</a>
+      <a href="#">contact</a>
+    </div>
+    <div class="box">
+      <h3>follow us</h3>
+
+      <a href="#">twitter</a>
+      <a href="#">linkedin</a>
+    </div>
+
+  </div>
+
+  <h1 class="credit"> created by <span> NT Hackathon Team 2</span></h1>
+
+</section>
+
+
+<script src="swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+<!--    <meta name="theme-color" content="#000000" />-->
+<!--    <meta-->
+<!--      name="description"-->
+<!--      content="Web site created using create-react-app"-->
+<!--    />-->
+<!--    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />-->
+<!--    &lt;!&ndash;-->
+<!--      manifest.json provides metadata used when your web app is installed on a-->
+<!--      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/-->
+<!--    &ndash;&gt;-->
+<!--    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />-->
+<!--    &lt;!&ndash;-->
+<!--      Notice the use of %PUBLIC_URL% in the tags above.-->
+<!--      It will be replaced with the URL of the `public` folder during the build.-->
+<!--      Only files inside the `public` folder can be referenced from the HTML.-->
+
+<!--      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will-->
+<!--      work correctly both with client-side routing and a non-root public URL.-->
+<!--      Learn how to configure a non-root public URL by running `npm run build`.-->
+<!--    &ndash;&gt;-->
+<!--    <title>React App</title>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    <noscript>You need to enable JavaScript to run this app.</noscript>-->
+<!--    <div id="root"></div>-->
+<!--    &lt;!&ndash;-->
+<!--      This HTML file is a template.-->
+<!--      If you open it directly in the browser, you will see an empty page.-->
+
+<!--      You can add webfonts, meta tags, or analytics to this file.-->
+<!--      The build step will place the bundled scripts into the <body> tag.-->
+
+<!--      To begin the development, run `npm start` or `yarn start`.-->
+<!--      To create a production bundle, use `npm run build` or `yarn build`.-->
+<!--    &ndash;&gt;-->
+<!--  </body>-->
+<!--</html>-->

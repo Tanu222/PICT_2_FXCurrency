@@ -1,0 +1,11 @@
+.App {
+  align-content: center;
+  padding-top: 10rem;
+  padding-left: 430px;
+  font-size: 15px;
+}
+.App .heading{
+  text-align: left;
+  margin-left: 20px;
+}
+
