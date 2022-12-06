@@ -1,0 +1,74 @@
+***************************
+*
+* UI screen to display all currencies along with the short code, description, and current 
+* exchange rate
+*
+***************************
+
+Chart.js Geo:::
+
+(works great with https://github.com/chartjs/chartjs-plugin-datalabels)
+
+Chart.js module for charting maps with legends. Adding new chart types: choropleth and bubbleMap.
+
+npm i chartjs-chart-geo
+
+TopoJson is packaged with this plugin to convert data, it is exposed as ChartGeo.topojson in the global context. However, this plugin doesn't include any topojson files itself. Some useful resources I found so far:
+
+US map: https://www.npmjs.com/package/us-atlas
+World map: https://www.npmjs.com/package/world-atlas
+individual countries: https://github.com/markmarkoh/datamaps/tree/master/src/js/data (untested)
+topojson collection: https://github.com/deldersveld/topojson (untested)
+const us = await fetch('https://unpkg.com/us-atlas/states-10m.json').then((r) => r.json());
+
+// whole US for the outline
+const nation = ChartGeo.topojson.feature(us, us.objects.nation).features[0];
+// individual states
+const states = ChartGeo.topojson.feature(us, us.objects.states).features;
+
+const alaska = states.find((d) => d.properties.name === 'Alaska');
+const california = states.find((d) => d.properties.name === 'California');
+...
+--------------
+
+const config = {
+  data: {
+    labels: ['Alaska', 'California'],
+    datasets: [{
+      label: 'States',
+      outline: nation, // ... outline to compute bounds
+      showOutline: true,
+      data: [
+        {
+          value: 0.4,
+          feature: alaska // ... the feature to render
+        },
+        {
+          value: 0.3,
+          feature: california
+        }
+      ]
+    }]
+  },
+  options: {
+    scales: {
+      xy: {
+        projection: 'albersUsa' // ... projection method
+      }
+    }
+  }
+};
+
+---------------
+Styling
+The styling of the new element GeoFeature is based on Bar Element with some additional options for the outline and graticule.
+
+see https://github.com/sgratzl/chartjs-chart-geo/blob/main/src/elements/GeoFeature.ts#L41
+
+Legend and Color Scale
+The coloring of the nodes will be done with a special color scale. The scale itself is based on a linear scale.
+
+see
+
+https://github.com/sgratzl/chartjs-chart-geo/blob/main/src/scales/LegendScale.ts#L148
+https://github.com/sgratzl/chartjs-chart-geo/blob/main/src/scales/ColorScale.ts#L180

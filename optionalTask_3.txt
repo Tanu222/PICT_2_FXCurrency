@@ -1,0 +1,25 @@
+***************************
+*
+* Provide a Service/Component to convert value of currency into another currency. For 
+* instance, if the user provides base currency as USD and target currency as INR and amount 
+* of 1000 and let’s say exchange rate is 79, component should convert amount into target 
+* currency and result should be 79,000 INR
+*
+***************************
+
+The given task can be derived from optional task number 1 with another additional input from user for "Amount"
+
+The SQL query is :
+
+SELECT <baseCur> AS er1,<reqCur> AS er2 FROM <tablename> WHERE date = <givenDate>;
+
+The following javascript function is used to calculate the required amount in the 
+
+function currencyConverter(ER1,ER2,amount){
+    // ER1 base (Given amount)
+    // ER2 currency 2 (to convert to)
+    //  specified amount
+
+    var res = (ER2*amount)/ER1;
+    return res;
+}

@@ -1,0 +1,198 @@
+***************************
+*
+* Automate uploading of exchange rate data into database
+*
+***************************
+
+What is .CSV file?
+The .CSV (Comma Separated Values) files are plain text files that contains a list of data separated by comma(,). It is a format best used for tabular data, row, and columns, exactly like a spreadsheet, just the difference is that the file is in the form of plain text. The idea of a CSV file is to perform export and import complex data from one application to another.
+
+Note: Here, we are using sample.csv to demonstrate our program and procedure. In sample.csv we have stored the user’s Name, Age, Email, and City.
+
+Import CSV into MySQL using Node.js:
+
+Create a node.js project using “npm init” and save your .csv file in the same directory. 
+Install two packages “mysql” and “csvtojson” using the following command:
+
+npm i mysql csvtojson
+
+mysql driver: This is a node.js driver for mysql. It is written in JavaScript, that does not require compiling. We are using it to establish connection with our MYSQL database and perform queries.
+csvtojson: Its a csv parser to convert csv to json or column arrays.
+
+Now just create a file like index.js and write down the following code:
+
+// Importing mysql and csvtojson packages
+// Requiring module
+const csvtojson = require('csvtojson');
+const mysql = require("mysql");
+  
+// Database credentials
+const hostname = "localhost",
+    username = "root",
+    password = "root",
+    databsename = "csvtomysql"
+  
+  
+// Establish connection to the database
+let con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: databsename,
+});
+  
+con.connect((err) => {
+    if (err) return console.error(
+            'error: ' + err.message);
+  
+    con.query("DROP TABLE sample", 
+        (err, drop) => {
+  
+        // Query to create table "sample"
+        var createStatament = 
+        "CREATE TABLE sample(Name char(50), " +
+        "Email char(50), Age int, city char(30))"
+  
+        // Creating table "sample"
+        con.query(createStatament, (err, drop) => {
+            if (err)
+                console.log("ERROR: ", err);
+        });
+    });
+});
+  
+// CSV file name
+const fileName = "sample.csv";
+  
+csvtojson().fromFile(fileName).then(source => {
+  
+    // Fetching the data from each row 
+    // and inserting to the table "sample"
+    for (var i = 0; i < source.length; i++) {
+        var Name = source[i]["Name"],
+            Email = source[i]["Email"],
+            Age = source[i]["Age"],
+            City = source[i]["City"]
+  
+        var insertStatement = 
+        `INSERT INTO sample values(?, ?, ?, ?)`;
+        var items = [Name, Email, Age, City];
+  
+        // Inserting data of current row
+        // into database
+        con.query(insertStatement, items, 
+            (err, results, fields) => {
+            if (err) {
+                console.log(
+    "Unable to insert item at row ", i + 1);
+                return console.log(err);
+            }
+        });
+    }
+    console.log(
+"All items stored into database successfully");
+});
+
+
+OR
+
+Install express multer body-parser mysql dependencies:
+
+npm install express multer body-parser mysql fast-csv
+
+body-parser – Node.js request body parsing middleware which parses the incoming request body before your handlers, and make it available under req.body property. In other words, it simplifies the incoming request.
+
+fast-CSV – Fast-csv is library for parsing and formatting CSVs or any other delimited value file in node.
+
+Multer – Multer is a node.js middleware for handling multipart/form-data , which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
+
+Mysql – A node.js driver for mysql. It is written in JavaScript, does not require compiling, and is 100% MIT licensed.
+
+Step 4 – Create Server.js File and Route
+Create server.js file; Then import express multer body-parser mysql fast csv dependencies in server.js and as well as create API route for import csv file data in MySql database; as shown below:
+
+const express = require('express')
+const app = express()
+const bodyparser = require('body-parser')
+const fs = require('fs');
+const csv = require('fast-csv');
+const mysql = require('mysql')
+const multer = require('multer')
+const path = require('path')
+//use express static folder
+app.use(express.static("./public"))
+// body-parser middleware use
+app.use(bodyparser.json())
+app.use(bodyparser.urlencoded({
+extended: true
+}))
+// Database connection
+const db = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "",
+database: "test"
+})
+db.connect(function (err) {
+if (err) {
+return console.error('error: ' + err.message);
+}
+console.log('Connected to the MySQL server.');
+})
+//! Use of Multer
+var storage = multer.diskStorage({
+destination: (req, file, callBack) => {
+callBack(null, './uploads/')    
+},
+filename: (req, file, callBack) => {
+callBack(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+}
+})
+var upload = multer({
+storage: storage
+});
+//! Routes start
+//route for Home page
+app.get('/', (req, res) => {
+res.sendFile(__dirname + '/index.html');
+});
+//@type   POST
+//route for post data
+// -> Express Upload RestAPIs
+app.post('/api/uploadfile', upload.single("uploadfile"), (req, res) =>{
+UploadCsvDataToMySQL(__dirname + '/uploads/' + req.file.filename);
+res.json({
+'msg': 'File uploaded/import successfully!', 'file': req.file
+});
+});
+function UploadCsvDataToMySQL(filePath){
+let stream = fs.createReadStream(filePath);
+let csvData = [];
+let csvStream = csv
+.parse()
+.on("data", function (data) {
+csvData.push(data);
+})
+.on("end", function () {
+// Remove Header ROW
+csvData.shift();
+// Open the MySQL connection
+db.connect((error) => {
+if (error) {
+console.error(error);
+} else {
+let query = 'INSERT INTO customer (id, address, name, age) VALUES ?';
+db.query(query, [csvData], (error, response) => {
+console.log(error || response);
+});
+}
+});
+// delete file after saving to MySQL database
+// -> you can comment the statement to see the uploaded CSV file.
+fs.unlinkSync(filePath)
+});
+stream.pipe(csvStream);
+}
+//create connection
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`Server is running at port ${PORT}`))
